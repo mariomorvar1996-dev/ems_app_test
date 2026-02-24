@@ -25,6 +25,11 @@ def get_agency_code(message):
             print("Warning: Agency code can't be a blank space.")
         else:
             return agency_id
+
+
+class Response():
+    def __init__(self, )
+
     
 class Patient():
     def __init__(self, patient_name, patient_lastname, patient_age):
