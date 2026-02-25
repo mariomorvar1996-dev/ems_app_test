@@ -137,16 +137,22 @@ def create_incident(agency_id):
     patient_lastname = input("Patient Lastname: ")
     patient_age = get_int_age("Patient Age: ")
     patient_gender = get_gender("Select gender: MASCULINE(m) | FEMININE(f)")
+    medical_history = input("Medical History (comma separated): ").split(",")
+    medical_history = [item.strip() for item in medical_history if item.strip()]
     print("\n" + "--MEDICATIONS--")
-    
+    meds = Medications()
+    medication_name = input("Medication Name: ")
+    medication_dose = input("Medication Dose: ")
+    administration_time = input("Administration Time: ")
+    meds.add_medication(medication_name, medication_dose, administration_time)
     
 
 
     incident_response = Response(unit, dispatched_time, type_call)
     incident_scene = Scene(scene_location, person_condition, notes)
     personnel_information = Personnel(paramedic_name, medic_role, medic_certification)
-    patient_information = Patient(patient_name, patient_lastname, patient_age, patient_gender, "Diabetes")
-    record = Incident(agency_id, description, incident_response, incident_scene, personnel_information, patient_information)
+    patient_information = Patient(patient_name, patient_lastname, patient_age, patient_gender, medical_history)
+    record = Incident(agency_id, description, incident_response, incident_scene, personnel_information, patient_information, meds)
     print(f"\nIncident added successfully \n{record}")
     return record
 
