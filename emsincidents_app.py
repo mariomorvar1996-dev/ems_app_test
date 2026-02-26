@@ -34,6 +34,18 @@ def get_gender(message):
             return gender_map[gender]
         print("Gender must be M or F. Try again.")
 
+def get_medical_history():
+    history = []
+    print("Enter medical conditions (type 'done' to finish):")
+    
+    while True:
+        condition = input("> ").strip()
+        if condition.lower() == "done":
+            break
+        if condition:
+            history.append(condition)
+    
+    return history
 
 class Response:
     def __init__(self, unit_dispatched, time_dispatched, call_type):
@@ -137,7 +149,7 @@ def create_incident(agency_id):
     patient_lastname = input("Patient Lastname: ")
     patient_age = get_int_age("Patient Age: ")
     patient_gender = get_gender("Select gender: MASCULINE(m) | FEMININE(f)")
-    medical_history = input("Medical History (comma separated): ").split(",")
+    medical_history = get_medical_history()
     medical_history = [item.strip() for item in medical_history if item.strip()]
     print("\n" + "--MEDICATIONS--")
     meds = Medications()
@@ -161,7 +173,7 @@ def menu():
     incidents_list = []
     while True:
         print("\n" + "-" * 35)
-        print("| CareReport 0.1 alfa version |")
+        print("| CareReport 0.01 alfa version |")
         print("-" * 35)
         print("1. Add PCR | 2. Print Incident Information")
         print("0. Exit")
