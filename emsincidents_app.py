@@ -48,9 +48,11 @@ def get_medical_history():
     return history
 
 class Response:
-    def __init__(self, unit_dispatched, time_dispatched, call_type):
+    def __init__(self, unit_dispatched, call_type):
+        time_dispatched = datetime.now()
+        formatted_time = time_dispatched.strftime("%H:%M:%S")
         self.unit_dispatched = unit_dispatched
-        self.time_dispatched = time_dispatched
+        self.time_dispatched = formatted_time
         self.call_type = call_type  #"Medical", "Trauma"
 
 # Sección Scene (ubicación y condiciones)
@@ -134,7 +136,6 @@ def create_incident(agency_id):
     description = input("Description: ")
     print("\n" + "--RESPONSE--")
     unit = input("Assigned Unit: ")
-    dispatched_time = input("Time Dispatched: ")
     type_call = input("Call Type: ")
     print("\n" + "--SCENE--")
     scene_location = input("Scene Location: ")
@@ -160,7 +161,7 @@ def create_incident(agency_id):
     
 
 
-    incident_response = Response(unit, dispatched_time, type_call)
+    incident_response = Response(unit, type_call)
     incident_scene = Scene(scene_location, person_condition, notes)
     personnel_information = Personnel(paramedic_name, medic_role, medic_certification)
     patient_information = Patient(patient_name, patient_lastname, patient_age, patient_gender, medical_history)
