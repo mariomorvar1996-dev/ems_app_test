@@ -166,7 +166,11 @@ def create_incident(agency_id):
     personnel_information = Personnel(paramedic_name, medic_role, medic_certification)
     patient_information = Patient(patient_name, patient_lastname, patient_age, patient_gender, medical_history)
     record = Incident(agency_id, description, incident_response, incident_scene, personnel_information, patient_information, meds)
+    print("\n" + "-" * 35)
+    print("\n" + "-" * 35)
     print(f"\nIncident added successfully \n{record}")
+    print("\n" + "-" * 35)
+    print("\n" + "-" * 35)
     return record
 
 def menu():
