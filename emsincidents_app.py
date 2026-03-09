@@ -194,8 +194,8 @@ def menu():
             else:
                 print("Existing Incidents:")
 
-                for i, incident in enumerate(incidents_list, start=1):
-                    print(f"{i}. Incident {incident.num}")
+                for incident in incidents_list:
+                    print(f"Incident {incident.num}")
 
                 choice_b = get_int("Select incident: ")
 
